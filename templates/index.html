@@ -1,0 +1,473 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile QR | Digital Identity Management</title>
+    <style>
+      :root {
+        --primary-color: #4361ee;
+        --secondary-color: #3f37c9;
+        --accent-color: #4cc9f0;
+        --dark-color: #1d3557;
+        --light-color: #f8f9fa;
+        --success-color: #4caf50;
+        --warning-color: #ff9800;
+        --danger-color: #f44336;
+        --gray-color: #6c757d;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f5f7fb;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .logo span {
+        color: var(--dark-color);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark-color);
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      .btn:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-2px);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 80px 0;
+      }
+
+      .hero-content {
+        flex: 1;
+        padding-right: 50px;
+      }
+
+      .hero-image {
+        flex: 1;
+        text-align: center;
+      }
+
+      .hero-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: var(--dark-color);
+      }
+
+      h2 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+        color: var(--dark-color);
+      }
+
+      p {
+        margin-bottom: 25px;
+        font-size: 1.1rem;
+        color: #555;
+      }
+
+      .features {
+        padding: 80px 0;
+        background-color: white;
+      }
+
+      .section-heading {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .feature-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .feature-title {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--dark-color);
+      }
+
+      .cta {
+        text-align: center;
+        padding: 100px 0;
+        background-color: #f5f7fb;
+      }
+
+      footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 50px 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column a {
+        color: #ddd;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-column a:hover {
+        color: var(--accent-color);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .flash-messages {
+        list-style: none;
+        margin-bottom: 20px;
+      }
+
+      .flash-message {
+        padding: 10px 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        font-weight: 500;
+      }
+
+      .success {
+        background-color: rgba(76, 175, 80, 0.1);
+        color: var(--success-color);
+        border: 1px solid var(--success-color);
+      }
+
+      .error {
+        background-color: rgba(244, 67, 54, 0.1);
+        color: var(--danger-color);
+        border: 1px solid var(--danger-color);
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero-content {
+          padding-right: 0;
+          margin-bottom: 50px;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <a href="{{ url_for('index') }}" class="logo"
+            >Profile<span>QR</span></a
+          >
+          <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            {% if 'user_id' in session %}
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li>
+              <a href="{{ url_for('logout') }}" class="btn btn-outline"
+                >Log Out</a
+              >
+            </li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Log In</a></li>
+            <li><a href="{{ url_for('register') }}" class="btn">Sign Up</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Flash Messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div class="container">
+        <ul class="flash-messages">
+          {% for category, message in messages %}
+          <li class="flash-message {{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %} {% endwith %}
+
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1>Your Digital Identity in a QR Code</h1>
+            <p>
+              Create your professional profile and share it instantly with
+              anyone using a simple QR code. Perfect for networking events,
+              conferences, or any professional gathering.
+            </p>
+            <a href="{{ url_for('register') }}" class="btn">Get Started Now</a>
+          </div>
+          <div class="hero-image">
+            <img
+              src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/7.15.0/simpleicons.svg"
+              alt="Profile QR Demo"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="features" id="features">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Why Choose ProfileQR?</h2>
+            <p>
+              Discover how our digital profile solution can enhance your
+              networking experience
+            </p>
+          </div>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">📱</div>
+              <h3 class="feature-title">Instant Sharing</h3>
+              <p>
+                Share your professional information with anyone in seconds
+                through a simple QR code scan.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🔒</div>
+              <h3 class="feature-title">Secure & Private</h3>
+              <p>
+                Control what information you share and keep your sensitive data
+                protected.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🌿</div>
+              <h3 class="feature-title">Eco-Friendly</h3>
+              <p>
+                Go paperless with digital profiles and reduce your environmental
+                footprint.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🔄</div>
+              <h3 class="feature-title">Always Updated</h3>
+              <p>
+                Update your profile anytime, and all your shared QR codes will
+                reflect the latest information.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">📊</div>
+              <h3 class="feature-title">Professional Image</h3>
+              <p>
+                Make a lasting impression with a sleek digital profile that
+                showcases your skills and experience.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">💼</div>
+              <h3 class="feature-title">Career Growth</h3>
+              <p>
+                Expand your professional network more efficiently and discover
+                new opportunities.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="container">
+          <h2>Ready to Transform Your Networking Experience?</h2>
+          <p>
+            Join thousands of professionals who are making meaningful
+            connections with ProfileQR.
+          </p>
+          <a href="{{ url_for('register') }}" class="btn"
+            >Create Your Profile Now</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>ProfileQR</h3>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#careers">Careers</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Support</h3>
+            <ul>
+              <li><a href="#help">Help Center</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#terms">Terms of Service</a></li>
+              <li><a href="#privacy">Privacy Policy</a></li>
+              <li><a href="#cookies">Cookie Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Connect</h3>
+            <ul>
+              <li><a href="#twitter">Twitter</a></li>
+              <li><a href="#linkedin">LinkedIn</a></li>
+              <li><a href="#instagram">Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 ProfileQR. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
