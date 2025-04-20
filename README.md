@@ -77,8 +77,8 @@ digital-business-card/
 ```
 
 ## 📸 Screenshots
+![screencapture-127-0-0-1-8000-2025-04-20-14_53_07](https://github.com/user-attachments/assets/8c241c45-f133-488c-acfd-992655eb808a)
 
-*[Add screenshots of your application here]*
 
 ## 🔒 Security Features
 
